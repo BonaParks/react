@@ -2,7 +2,7 @@ import React from 'react';
 import { useGetAccountInfo, DappUI } from '@elrondnetwork/dapp-core';
 import { Ui } from '@elrondnetwork/dapp-utils';
 import moment from 'moment';
-import { network } from 'config';
+import { network } from '../../../config';
 import StatusIcon from './StatusIcon';
 import txStatus from './txStatus';
 import { TransactionType } from './types';

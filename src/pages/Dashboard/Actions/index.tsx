@@ -15,7 +15,7 @@ import {
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
-import { contractAddress, network } from 'config';
+import { contractAddress, network } from '../../../config';
 
 const Actions = () => {
   const account = useGetAccountInfo();

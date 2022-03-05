@@ -3,7 +3,7 @@ import { DappCoreUIWrapper, DappUI } from '@elrondnetwork/dapp-core';
 import { DappProvider } from '@elrondnetwork/dapp-core';
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import Layout from 'components/Layout';
-import { network, walletConnectBridge, walletConnectDeepLink } from 'config';
+import { network, walletConnectBridge, walletConnectDeepLink } from './config';
 import PageNotFound from 'pages/PageNotFound';
 import { routeNames } from 'routes';
 import routes from 'routes';

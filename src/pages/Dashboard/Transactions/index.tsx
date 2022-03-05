@@ -2,7 +2,7 @@ import React from 'react';
 import { useGetAccountInfo, DappUI } from '@elrondnetwork/dapp-core';
 import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
 import { getTransactions } from 'apiRequests';
-import { contractAddress, network } from 'config';
+import { contractAddress, network } from '../../../config';
 import TransactionsList from './TransactionsList';
 import { StateType } from './types';
 
@@ -29,6 +29,7 @@ const Transactions = () => {
     });
   };
 
+  // eslint-disable-next-line
   React.useEffect(fetchData, []);
 
   const { transactions } = state;
