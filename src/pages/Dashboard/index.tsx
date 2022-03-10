@@ -18,11 +18,10 @@ const Dashboard = () => {
               </div >
               <div className='card-body text-center p-4'>
                 <br />
-                <h4>Mint presale<br />
-                supply: 1k,<br /><br />
-                MINT PRICE: 0,5 EGLD <br/><br />
-                max per wallet: 2 per wallet for the 10 first minutes<br />
-                  <span>then 6 per wallet</span>
+                <h4>Mint presale<br /> <br />
+                Price: 0.5 EGLD | Supply: 1k<br /><br />
+                -3 NFTs/Wallet max in the first 10min. <br/><br />
+                -After 10min (at 9:10pm UTC), every people (WL or not) <br /> will be able to mint a max of 6 NFTs/wallet.<br />
                 </h4>
               </div>
               <Actions />

@@ -10,7 +10,7 @@ import { contractAddress, /*network*/ } from '../../../config';
 const Actions = () => {
   const { hasPendingTransactions } = useGetPendingTransactions();
 
-  const [nbrNftToMint, setNbrNftToMint] = React.useState<1 | 2>(1);
+  const [nbrNftToMint, setNbrNftToMint] = React.useState<1 | 2 | 3>(1);
   const [secondsLeft, setSecondsLeft] = React.useState<number>();
   const [hasPing, /*setHasPing*/] = React.useState<boolean>(true);
   const /*transactionSessionId*/ [, setTransactionSessionId] = React.useState<
@@ -82,7 +82,8 @@ const Actions = () => {
     <div>
       <div className='d-flex mt-4 justify-content-center'>
         <div className='btn abtn btnw' onClick={() => setNbrNftToMint(1)}>1</div>
-        <div className='btn abtn' onClick={() => setNbrNftToMint(2)}>2</div>
+        <div className='btn abtn btnw' onClick={() => setNbrNftToMint(2)}>2</div>
+        <div className='btn abtn' onClick={() => setNbrNftToMint(3)}>3</div>
       </div>
       <div className='d-flex mt-2 justify-content-center'>
         {hasPing !== undefined && (
