@@ -17,19 +17,19 @@ export const walletConnectDeepLink =
   'https://maiar.page.link/?apn=com.elrond.maiar.wallet&isi=1519405832&ibi=com.elrond.maiar.wallet&link=https://maiar.com/';
 
 export const contractAddress =
-  'erd1qqqqqqqqqqqqqpgqvvvs60z4v6aynfmahh02pyq03xpmrh0ude8st4czns';
+  'erd1qqqqqqqqqqqqqpgqha3yt3gg93ejdvu9tcu02ws2f33c2cv8lasqeuk83d';
 
 export const dAppName = 'Bona Parks';
 
 export const network: NetworkType & {
   graphQlAddress: string;
 } = {
-  id: 'devnet',
-  name: 'Devnet',
-  egldLabel: 'xEGLD',
-  walletAddress: 'https://devnet-wallet.elrond.com',
-  apiAddress: 'https://devnet-api.elrond.com',
-  gatewayAddress: 'https://devnet-gateway.elrond.com',
-  explorerAddress: 'http://devnet-explorer.elrond.com',
-  graphQlAddress: 'https://devnet-exchange-graph.elrond.com/graphql'
+  id: 'mainnet',
+  name: 'Mainnet',
+  egldLabel: 'EGLD',
+  walletAddress: 'https://wallet.elrond.com',
+  apiAddress: 'https://api.elrond.com',
+  gatewayAddress: 'https://gateway.elrond.com',
+  explorerAddress: 'http://explorer.elrond.com',
+  graphQlAddress: 'https://exchange-graph.elrond.com/graphql'
 };
