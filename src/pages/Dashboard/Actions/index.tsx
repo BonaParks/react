@@ -1,29 +1,18 @@
 import * as React from 'react';
 import {
   transactionServices,
-  useGetAccountInfo,
   useGetPendingTransactions,
   refreshAccount
 } from '@elrondnetwork/dapp-core';
-import {
-  Address,
-  AddressValue,
-  ContractFunction,
-  ProxyProvider,
-  Query
-} from '@elrondnetwork/erdjs';
-import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
-import { contractAddress, network } from '../../../config';
+import { contractAddress, /*network*/ } from '../../../config';
 
 const Actions = () => {
-  const account = useGetAccountInfo();
   const { hasPendingTransactions } = useGetPendingTransactions();
-  const { address } = account;
 
+  const [nbrNftToMint, setNbrNftToMint] = React.useState<1 | 2>(1);
   const [secondsLeft, setSecondsLeft] = React.useState<number>();
-  const [hasPing, setHasPing] = React.useState<boolean>(true);
+  const [hasPing, /*setHasPing*/] = React.useState<boolean>(true);
   const /*transactionSessionId*/ [, setTransactionSessionId] = React.useState<
       string | null
     >(null);
@@ -49,77 +38,23 @@ const Actions = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   React.useEffect(mount, [hasPing]);
 
-  React.useEffect(() => {
-    const query = new Query({
-      address: new Address(contractAddress),
-      func: new ContractFunction('getTimeToPong'),
-      args: [new AddressValue(new Address(address))]
-    });
-    const proxy = new ProxyProvider(network.gatewayAddress);
-    proxy
-      .queryContract(query)
-      .then(({ returnData }) => {
-        const [encoded] = returnData;
-        switch (encoded) {
-          case undefined:
-            setHasPing(true);
-            break;
-          case '':
-            setSecondsLeft(0);
-            setHasPing(false);
-            break;
-          default: {
-            const decoded = Buffer.from(encoded, 'base64').toString('hex');
-            setSecondsLeft(parseInt(decoded, 16));
-            setHasPing(false);
-            break;
-          }
-        }
-      })
-      .catch((err) => {
-        console.error('Unable to call VM query', err);
-      });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasPendingTransactions]);
-
+ 
   const { sendTransactions } = transactionServices;
-
-  const sendPingTransaction = async () => {
-    const pingTransaction = {
-      value: '1000000000000000000',
-      data: 'ping',
+  
+  const sendMintTransaction = async () => {
+    const mintTransaction = {
+      value: `${500000000000000000*nbrNftToMint}`,
+      data: `mint@0${nbrNftToMint}`,
       receiver: contractAddress
     };
     await refreshAccount();
     const { sessionId /*, error*/ } = await sendTransactions({
-      transactions: pingTransaction,
+      transactions: mintTransaction,
       transactionsDisplayInfo: {
-        processingMessage: 'Processing Ping transaction',
-        errorMessage: 'An error has occured during Ping',
-        successMessage: 'Ping transaction successful',
-        transactionDuration: 10000
-      }
-    });
-    if (sessionId != null) {
-      setTransactionSessionId(sessionId);
-    }
-  };
-
-  const sendPongTransaction = async () => {
-    const pongTransaction = {
-      value: '0',
-      data: 'pong',
-      receiver: contractAddress
-    };
-    await refreshAccount();
-
-    const { sessionId /*, error*/ } = await sendTransactions({
-      transactions: pongTransaction,
-      transactionsDisplayInfo: {
-        processingMessage: 'Processing Pong transaction',
-        errorMessage: 'An error has occured during Pong',
-        successMessage: 'Pong transaction successful',
-        transactionDuration: 10000
+        processingMessage: 'Processing Mint transaction',
+        errorMessage: 'An error has occured during Mint',
+        successMessage: 'Mint transaction successful',
+        transactionDuration: 1000
       }
     });
     if (sessionId != null) {
@@ -128,63 +63,53 @@ const Actions = () => {
   };
 
   const pongAllowed = secondsLeft === 0 && !hasPendingTransactions;
-  const notAllowedClass = pongAllowed ? '' : 'not-allowed disabled';
 
   const timeRemaining = moment()
     .startOf('day')
     .seconds(secondsLeft || 0)
     .format('mm:ss');
+  
+    // function disableButton(button, seconds) {
+    //   button.disabled = true;
+    //   setTimeout(function() {
+    //   button.disabled = false;
+    //     }, seconds * 1000);
+    // }
+    // disableButton(document.getElementById("time"), 5);
+   
 
   return (
-    <div className='d-flex mt-4 justify-content-center'>
-      <div>Sharky</div>
-      {hasPing !== undefined && (
-        <>
-          {hasPing && !hasPendingTransactions ? (
-            <div className='action-btn' onClick={sendPingTransaction}>
-              <div>AbdeAbde</div>
-              <button className='btn'>
-                <FontAwesomeIcon icon={faArrowUp} className='text-primary' />
-              </button>
-              <a href='/' className='text-white text-decoration-none'>
-                Ping
-              </a>
-            </div>
-          ) : (
-            <>
-              <div className='d-flex flex-column'>
-                <div
-                  {...{
-                    className: `action-btn ${notAllowedClass}`,
-                    ...(pongAllowed ? { onClick: sendPongTransaction } : {})
-                  }}
-                >
-                  <button className={`btn ${notAllowedClass}`}>
-                    <FontAwesomeIcon
-                      icon={faArrowDown}
-                      className='text-primary'
-                    />
-                  </button>
-                  <span className='text-white'>
-                    {pongAllowed ? (
-                      <a href='/' className='text-white text-decoration-none'>
-                        Pong
-                      </a>
-                    ) : (
-                      <>Pong</>
-                    )}
-                  </span>
-                </div>
-                {!pongAllowed && !hasPendingTransactions && (
-                  <span className='opacity-6 text-white'>
-                    {timeRemaining} until able to Pong
-                  </span>
-                )}
+    <div>
+      <div className='d-flex mt-4 justify-content-center'>
+        <div className='btn abtn btnw' onClick={() => setNbrNftToMint(1)}>1</div>
+        <div className='btn abtn' onClick={() => setNbrNftToMint(2)}>2</div>
+      </div>
+      <div className='d-flex mt-2 justify-content-center'>
+        {hasPing !== undefined && (
+          <>
+            {hasPing && !hasPendingTransactions ? (
+              <div className='action-btn' onClick={sendMintTransaction}>
+                <button className='btn'>
+                  <div id="time" className=''>mint {nbrNftToMint}</div>
+                </button>
+                <a href='/' className='text-white text-decoration-none'>
+                  Mint
+                </a>
               </div>
-            </>
-          )}
-        </>
-      )}
+            ) : (
+              <>
+                <div className='d-flex flex-column'>
+                  {!pongAllowed && !hasPendingTransactions && (
+                    <span className='opacity-6 text-white'>
+                      {timeRemaining} until to get your nft
+                    </span>
+                  )}
+                </div>
+              </>
+            )}
+          </>
+        )}
+      </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@
 -------------------------------------------------- */
 $body: #000;
 $headings-font-weight: 300 !important;
-$primary: #1b46c2;
+$primary: #d02561;
 $light: #fafafa;
 
 /* Do not move the imports from here.
@@ -16,7 +16,7 @@ Override Bootstrap variables only above.
 -------------------------------------------------- */
 html {
   min-height: 100%;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .wrapper {
@@ -46,37 +46,55 @@ html {
 
 /* Navbar
 -------------------------------------------------- */
-.elrond-logo {
-  width: 85px;
-  height: 25px;
-}
-
 .dapp-name {
   line-height: 1;
-  border-left: 1px solid $gray-400;
-  padding-left: 3px;
-  margin-left: 4px;
+  color: #000;
 }
 
 /* Dashboard
 -------------------------------------------------- */
-.action-btn {
-  background-color: purple;
+.btnw {
+  margin-right: 1rem;
+}
+
+.abtn {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: #d02561;
+  border-radius: 10%;
   color: $white;
+  width: 4rem;
+  height: 4rem;
+
+  &:hover,
+  :active {
+    opacity: 0.9;
+    background: $light;
+    color: #d02561;
+  }
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #d02561;
   margin: 0 7px;
 
   button {
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    background-color: $white;
+    border-radius: 30%;
+    width: 6rem;
+    height: 6rem;
+    background: $light;
+    color: #d02561;
 
     &:hover {
       opacity: 0.9;
+      background: #d02561;
+      color: $light;
     }
   }
 }

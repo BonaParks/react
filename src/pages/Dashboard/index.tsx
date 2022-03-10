@@ -14,6 +14,16 @@ const Dashboard = () => {
                 <div className='card-body text-center p-4'>
                   <TopInfo />
                 </div>
+                <br />
+              </div >
+              <div className='card-body text-center p-4'>
+                <br />
+                <h4>Mint presale<br />
+                supply: 1k,<br /><br />
+                MINT PRICE: 0,5 EGLD <br/><br />
+                max per wallet: 2 per wallet for the 10 first minutes<br />
+                  <span>then 6 per wallet</span>
+                </h4>
               </div>
               <Actions />
               <Transactions />

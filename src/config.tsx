@@ -17,9 +17,9 @@ export const walletConnectDeepLink =
   'https://maiar.page.link/?apn=com.elrond.maiar.wallet&isi=1519405832&ibi=com.elrond.maiar.wallet&link=https://maiar.com/';
 
 export const contractAddress =
-  'erd1qqqqqqqqqqqqqpgquvt728n40ssd8n2qns9jrlqpwq2jc4rj4cysfuj3ad';
+  'erd1qqqqqqqqqqqqqpgqvvvs60z4v6aynfmahh02pyq03xpmrh0ude8st4czns';
 
-export const dAppName = 'Dapp';
+export const dAppName = 'Bona Parks';
 
 export const network: NetworkType & {
   graphQlAddress: string;
