@@ -91,7 +91,7 @@ const Actions = () => {
             {hasPing && !hasPendingTransactions ? (
               <div className='action-btn' onClick={sendMintTransaction}>
                 <button className='btn'>
-                  <div id="time" className=''>mint {nbrNftToMint}</div>
+                  <div id="time" className=''>Mint {nbrNftToMint}</div>
                 </button>
                 <a href='/' className='text-white text-decoration-none'>
                   Mint
