@@ -68,15 +68,6 @@ const Actions = () => {
     .startOf('day')
     .seconds(secondsLeft || 0)
     .format('mm:ss');
-  
-    // function disableButton(button, seconds) {
-    //   button.disabled = true;
-    //   setTimeout(function() {
-    //   button.disabled = false;
-    //     }, seconds * 1000);
-    // }
-    // disableButton(document.getElementById("time"), 5);
-   
 
   return (
     <div>
