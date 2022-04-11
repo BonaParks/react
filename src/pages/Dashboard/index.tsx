@@ -56,7 +56,7 @@ const Dashboard: React.FC<{}> = () => {
                 <h4>Mint presale<br /> <br />
                 Price: 0.5 EGLD | Supply: 1k
                 </h4>
-                <p>{nftDropLeft} minted out of 1000</p>
+                <p>{nftDropLeft - 30} minted out of 1000</p>
                 <div className="imgDemo">
                   <img src={img1} alt="bonapass nft" />
                   <img src={img2} alt="bonapass nft" />
