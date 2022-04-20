@@ -18,7 +18,7 @@ const bodyContent = JSON.stringify({
 }
 );
 
-const supply = 1000;
+const supply = 420;
  
 
 const Dashboard: React.FC<{}> = () => {
@@ -53,10 +53,10 @@ const Dashboard: React.FC<{}> = () => {
               </div >
               <div className='card-body text-center p-4'>
                 <br />
-                <h4>Mint presale<br /> <br />
-                Price: 0.5 EGLD | Supply: 1k
+                <h4>🍀Mint special 420 day🍀<br /> <br />
+                🍀Price: 0.420 EGLD | Supply: 420🍀
                 </h4>
-                <p>{nftDropLeft} minted out of 1000</p>
+                <p>{nftDropLeft} minted out of {supply}</p>
                 <div className="imgDemo">
                   <img src={img1} alt="bonapass nft" />
                   <img src={img2} alt="bonapass nft" />

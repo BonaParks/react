@@ -43,7 +43,7 @@ const Actions = () => {
   
   const sendMintTransaction = async () => {
     const mintTransaction = {
-      value: `${500000000000000000*nbrNftToMint}`,
+      value: `${420000000000000000*nbrNftToMint}`,
       data: `mint@0${nbrNftToMint}`,
       receiver: contractAddress
     };
