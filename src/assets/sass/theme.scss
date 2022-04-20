@@ -2,7 +2,8 @@
 -------------------------------------------------- */
 $body: #000;
 $headings-font-weight: 300 !important;
-$primary: #d02561;
+// $primary: #d02561;
+$primary: #20860c;
 $light: #fafafa;
 
 /* Do not move the imports from here.
@@ -74,7 +75,8 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #d02561;
+  // background: #d02561;
+  background: #129909;
   border-radius: 10%;
   color: $white;
   width: 4rem;
@@ -84,7 +86,8 @@ html {
   :active {
     opacity: 0.9;
     background: $light;
-    color: #d02561;
+    // color: #d02561;
+    color: #129909;
   }
 }
 
@@ -105,7 +108,8 @@ html {
 
     &:hover {
       opacity: 0.9;
-      background: #d02561;
+      // background: #d02561;
+      background: #129909;
       color: $light;
     }
   }
